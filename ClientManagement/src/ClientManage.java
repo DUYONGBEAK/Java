@@ -8,47 +8,60 @@ public class ClientManage {
 		ArrayList<Client> c = new ArrayList<Client>();
 		// 선택적으로 별점입력을 위한 고객관리 명단 리스트
 		ArrayList<StarPoint> p = new ArrayList<StarPoint>();
+
+		// 배열로 하는 방법
+//		ClientP[] visitor2 = new ClientP[100];
+//		int visitorindex = 0;
+
 		Scanner s = new Scanner(System.in);
-		
+
 		// 메뉴 선택
 		for (int i = 0; i < 9999999; i++) {
 			System.out.println();
 			System.out.println("원하시는 메뉴를 선택해주세요.");
 			System.out.println("1. : 방문자 새로 입력");
 			System.out.println("2. : 방문자 전체 목록 출력");
-			System.out.println("작업이 완료되셨으면 exit를 입력하세요.");
+			System.out.println("작업이 완료되셨으면 :q를 입력하세요.");
 			String userInputString = s.nextLine();
-			
+
 			// 이름과 연락처 기입
 			if (userInputString.equals("1")) {
 				System.out.println();
 				System.out.println("이름과 연락처를 차례로 입력하세요.");
-				
+
 				// 입력받는 변수들을 별점입력할 때 동일하게 가져가기 위해 변수에 담음
 				String username = s.nextLine();
 				String userphone = s.nextLine();
 				c.add(new Client(username, userphone));
 				System.out.println();
-				
+
+				// 배열로 하는 방법 (반복문을 돌더라도 인덱스까지 돌아야한다. length는 안됨)
+//				visitor2[visitorindex] = new ClientP();
+//				visitorindex++;
+
 				// 별점 입력 부분
 				System.out.println("별점을 입력하시겠습니까? [네 : 1 , 아니오 : 2]");
 				String userInputString2 = s.nextLine();
 				if (userInputString2.equals("1")) {
-					
+
 					// 위에서 입력받은 이름과 연락처는 그대로 가져오고 지금 입력하는 별점만 추가해서 새로운 리스트에 담음
 					System.out.println("1 ~ 5점 중에 숫자로 입력하세요.");
 					String userstar = s.nextLine();
 					// 별점의 평균을 구하기 위해 형변환을 진행
-					int star = Integer.parseInt(userstar);
-					p.add(new StarPoint(username, userphone, star));
-				
-				// 아니오를 누르면 초기화면으로 돌아감	
-				}else if(userInputString2.equals("2")){
+					try {
+						int star = Integer.parseInt(userstar);
+						p.add(new StarPoint(username, userphone, star));
+					} catch (Exception e) {
+
+					}
+
+					// 아니오를 누르면 초기화면으로 돌아감
+				} else if (userInputString2.equals("2")) {
 					continue;
-				}else {
+				} else {
 					System.out.println("올바르게 입력해 주세요.");
 				}
-				
+
 				// 전체목록 출력
 			} else if (userInputString.equals("2")) {
 				System.out.println();
@@ -65,9 +78,9 @@ public class ClientManage {
 				}
 				// 별점 평균 출력
 				System.out.println();
-				System.out.println("고객 평균 별점 : " + ((double)totalScore / p.size()));
+				System.out.println("고객 평균 별점 : " + ((double) totalScore / p.size()));
 				System.out.println();
-			} else if (userInputString.equals("exit")) {
+			} else if (userInputString.equals(":q")) {
 				break;
 			} else {
 				System.out.println("올바르게 입력해 주세요.");
