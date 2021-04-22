@@ -1,91 +1,83 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class ClientManage {
+public class CustomerManage {
 	public static void main(String[] args) {
 
-		// 기본 고객관리 명단 리스트
-		ArrayList<Client> c = new ArrayList<Client>();
-		// 선택적으로 별점입력을 위한 고객관리 명단 리스트
-		ArrayList<StarPoint> p = new ArrayList<StarPoint>();
-
-		// 배열로 하는 방법
-//		ClientP[] visitor2 = new ClientP[100];
-//		int visitorindex = 0;
-
+		List<Customer> customer = new ArrayList<Customer>();
+		List<StarScore> starScore = new ArrayList<StarScore>();
 		Scanner s = new Scanner(System.in);
 
-		// 메뉴 선택
-		for (int i = 0; i < 9999999; i++) {
-			System.out.println();
-			System.out.println("원하시는 메뉴를 선택해주세요.");
-			System.out.println("1. : 방문자 새로 입력");
-			System.out.println("2. : 방문자 전체 목록 출력");
-			System.out.println("작업이 완료되셨으면 :q를 입력하세요.");
-			String userInputString = s.nextLine();
+		for (int i = 0; i < 999; i++) {
+			System.out.println("메뉴를 선택하세요.");
+			System.out.println("1 : 명부 작성");
+			System.out.println("2 : 명부 전체출력");
+			System.out.println("3 : 명부 삭제");
+			System.out.println("종료를 원하시면 :q를 입력하세요.");
+			String userInput = s.nextLine();
 
-			// 이름과 연락처 기입
-			if (userInputString.equals("1")) {
-				System.out.println();
-				System.out.println("이름과 연락처를 차례로 입력하세요.");
+			if (userInput.equals("1")) {
+				System.out.println("이름이 입력하세요.");
+				String userName = s.nextLine();
+				System.out.println("연락처를 입력하세요.");
+				String userPhone = s.nextLine();
+				customer.add(new Customer(userName, userPhone));
+				System.out.println("별점을 입력하시겠습니까?[y : n]");
+				String userString = s.nextLine();
 
-				// 입력받는 변수들을 별점입력할 때 동일하게 가져가기 위해 변수에 담음
-				String username = s.nextLine();
-				String userphone = s.nextLine();
-				c.add(new Client(username, userphone));
-				System.out.println();
-
-				// 배열로 하는 방법 (반복문을 돌더라도 인덱스까지 돌아야한다. length는 안됨)
-//				visitor2[visitorindex] = new ClientP();
-//				visitorindex++;
-
-				// 별점 입력 부분
-				System.out.println("별점을 입력하시겠습니까? [네 : 1 , 아니오 : 2]");
-				String userInputString2 = s.nextLine();
-				if (userInputString2.equals("1")) {
-
-					// 위에서 입력받은 이름과 연락처는 그대로 가져오고 지금 입력하는 별점만 추가해서 새로운 리스트에 담음
-					System.out.println("1 ~ 5점 중에 숫자로 입력하세요.");
-					String userstar = s.nextLine();
-					// 별점의 평균을 구하기 위해 형변환을 진행
-					try {
-						int star = Integer.parseInt(userstar);
-						p.add(new StarPoint(username, userphone, star));
-					} catch (Exception e) {
-
+				if (userString.equals("y")) {
+					System.out.println("1 ~ 5점 입력하세요.");
+					String starPoint = s.nextLine();
+					int star = Integer.parseInt(starPoint);
+					if (1 < star || star > 6) {
+						for (int j = 0; j < 999; j++) {
+							System.out.println("1 ~ 5점을 입력하세요.");
+							starPoint = s.nextLine();
+							star = Integer.parseInt(starPoint);
+							if (star >= 1 && star <= 5) {
+								break;
+							}
+						}
 					}
+					starScore.add(new StarScore(userName, userPhone, star));
 
-					// 아니오를 누르면 초기화면으로 돌아감
-				} else if (userInputString2.equals("2")) {
-					continue;
+				} else if (userString.equals("n")) {
+					System.out.println("별점 입력을 하지 않습니다.");
 				} else {
-					System.out.println("올바르게 입력해 주세요.");
+					System.out.println("숫자를 입력하지 않으셨습니다. 별점입력은 명단 삭제 후 다시 진행해주세요.");
+				}
+				System.out.println();
+
+			} else if (userInput.equals("2")) {
+				for (int j = 0; j < customer.size(); j++) {
+					System.out.println("" + (j + 1) + customer.get(j).name + ", " + customer.get(j).phone);
+				}
+				System.out.println();
+				int totalStar = 0;
+				for (int j = 0; j < starScore.size(); j++) {
+					System.out.println("" + starScore.get(j).name + "(" + starScore.get(j).star + "점)");
+					totalStar = totalStar + starScore.get(j).star;
 				}
 
-				// 전체목록 출력
-			} else if (userInputString.equals("2")) {
+				System.out.println("총점 : " + totalStar + "점, 평균 : " + ((double) totalStar / starScore.size()));
+
 				System.out.println();
-				// 아름과 연락처 출력
-				for (int j = 0; j < c.size(); j++) {
-					System.out.println("" + (j + 1) + "번 고객 :" + c.get(j).name + " (" + c.get(j).phone + ")");
+			} else if (userInput.equals("3")) {
+				System.out.println("연락처를 입력하세요.(삭제되었습니다가 떠야 정상적으로 실행이 된 것입니다.)");
+				String userphone = s.nextLine();
+				for (int j = 0; j < customer.size(); j++) {
+					if(customer.get(j).phone == userphone) {
+						customer.remove(j);
+					}
 				}
+				System.out.println("삭제되었습니다.");
 				System.out.println();
-				// 별점 입력한 목록 출력
-				int totalScore = 0;
-				for (int k = 0; k < p.size(); k++) {
-					System.out.println("" + (k + 1) + "번 고객 :" + p.get(k).username + " (" + p.get(k).star + "점)");
-					totalScore = totalScore + p.get(k).star;
-				}
-				// 별점 평균 출력
-				System.out.println();
-				System.out.println("고객 평균 별점 : " + ((double) totalScore / p.size()));
-				System.out.println();
-			} else if (userInputString.equals(":q")) {
+			} else if (userInput.equals(":q")) {
 				break;
 			} else {
-				System.out.println("올바르게 입력해 주세요.");
+				System.out.println("잘못 입력했습니다.");
 			}
 		}
-
 	}
 }
