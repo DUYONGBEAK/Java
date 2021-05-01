@@ -38,6 +38,14 @@ public class ExecClass {
 				}
 			}
 		}
+		// 순위 세팅
+		for (int i = 0; i < sub.length; i++) {
+			if (i > 0 && sub[i - 1].totalScore == sub[i].totalScore) {
+				sub[i].rank = sub[i - 1].rank;
+			} else {
+				sub[i].rank = i + 1;
+			}
+		}
 
 		// 반별 순위를 출력
 		for (int i = 0; i < 3; i++) {
