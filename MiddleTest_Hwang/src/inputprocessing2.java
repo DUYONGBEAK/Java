@@ -22,6 +22,8 @@ public class inputprocessing2 {
 			String[] E = sc.nextLine().split(" ");
 
 			// stream배열을 int로 형변환해서 새로운 배열에 담아줌
+			// for, if문을 줄이기 위해 stream을 사용함
+			// 하지만 상황에 따라 stream이 더 느릴 수 있다.
 			int[] intArray = Stream.of(E).mapToInt(Integer::parseInt).toArray();
 			// 배열을 정렬함
 			Arrays.sort(intArray);

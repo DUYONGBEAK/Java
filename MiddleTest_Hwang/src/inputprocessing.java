@@ -8,8 +8,6 @@ public class inputprocessing {
 
 	public static void main(String args[]) throws Exception {
 		
-		// for, if문을 줄이기 위해 stream을 사용함
-		// 하지만 상황에 따라 stream이 더 느릴 수 있다.
 		System.setIn(new FileInputStream("src/inputTest.txt"));
 		Scanner sc = new Scanner(System.in);
 		
@@ -28,6 +26,8 @@ public class inputprocessing {
 			 sum = 0;
 			 // 문자열이 들어옴
 			 char[] c = sc.nextLine().toCharArray();
+			 
+//			 System.out.println(Arrays.toString(c));
 
 			 // 문자열을 검사해서 A가 있으면 합계변수를 카운트해줌
 			 for(int j=0; j < c.length ; j++) {
