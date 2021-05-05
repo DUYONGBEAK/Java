@@ -1,6 +1,16 @@
 import java.util.Arrays;
 import java.util.Scanner;
-
+/* 수열의 길이 :N
+ * 수가 더해지는 횟수 : M
+ * 특정 숫ㅈ가 더해지는 최대 횟수 : K
+ * 주어진 입력조건에서 가장 큰 수를 출력하시오.
+ * 입력
+ * 5 5 2
+ * 1 2 3 4 5
+ *
+ * 출력
+ * 24
+ */
 public class CT_BigN {
 
 	public static void main(String[] args) {
