@@ -2,7 +2,24 @@ import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Stream;
-
+/* 주어지는 N줄의 문자열을 읽어 들여서,
+ * 각 행을 오름차순으로 출력하는 프로그램을 작성하시오.
+ * 입력의 첫 줄에는 테스트 케이스의 갯수가 주어진다.
+ * 입력
+ * 5
+ * 1 2 3 4 5 6 7 8 9 10
+ * 7 5 2 1 2
+ * 4 5 2
+ * 2 6 4 8 10
+ * 1 3 7 5 9
+ * 
+ * 출력
+ * 1 2 3 4 5 6 7 8 9 10
+ * 1 2 2 5 7
+ * 2 4 5
+ * 2 4 6 8 10
+ * 1 3 5 7 9
+ */
 public class inputprocessing2 {
 
 	public static void main(String args[]) throws Exception {
