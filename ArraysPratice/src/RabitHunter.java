@@ -1,7 +1,24 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+/* 20*20 배열에 여우 한마리와 토끼 n마리가 배치되어 있고,
+ * 여우는 가로 세로 대각선에 위치한 토끼를 모구 잡아먹을 수 있습니다.
+ * 잡아먹을 수 있는 토끼 수를 세는 문제입니다.
+ * 입력 예 : 3 10 10 1 5 6 8 2 17
+ * 제일 앞 숫자는 토끼 수
+ * 두번째 세번째는 여우 좌표(10,10)
+ * 그 뒤부터 토끼좌표
+ * 입력
+ * 3   
+ * 3 10 10 1 5 6 8 2 17
+ * 4 3 3 2 1 4 2 5 3 4 5
+ * 1 3 3 1 1
+ * 
+ * 출력
+ * 0
+ * 1
+ * 2
+ */
 public class RabitHunter {
 
 	static int N;
