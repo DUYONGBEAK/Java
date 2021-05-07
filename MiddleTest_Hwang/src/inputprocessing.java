@@ -1,7 +1,19 @@
 import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.Scanner;
-
+/* 주어지는 N줄의 문자열에서 문자 A가 각 행에서 몇개인지 출력하는 프로그램을 작성하시오.
+ * 입력의 첫 줄에는 테스트 케이스의 갯수가 주어진다.
+ * 입력
+ * 3
+ * *CDA
+ * **AA
+ * ABCD
+ * 
+ * 출력
+ * 1
+ * 2
+ * 1
+ */
 public class inputprocessing {
 	static int N;
 	static int AnswerN;
