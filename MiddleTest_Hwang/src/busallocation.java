@@ -1,7 +1,23 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/* 수학여행을 위해 학생 N명을 배차해야 한다.
+ * 버스는 45인승 25인승이 준비되어 있다.
+ * 각 버스의 배차 비용은 각각 45만원과 25만원이다.
+ * 가장 적은비용으로 버스를 배차하고자 할 때 45인승 버스와 25인승 버스의  수를 출력하시오.
+ * 입력 : 출력
+ * 25 : 0 1
+ * 50 : 0 2
+ * 55 : 1 1
+ * 60 : 1 1
+ * 70 : 1 1
+ * 75 : 0 3
+ * 80 : 2 0
+ * 95 : 1 2
+ * 125 : 0 5
+ * 160 : 3 1
+ * 350 : 0 14
+ */
 public class busallocation {
 	public static void main(String[] args) throws IOException {
 		// 버퍼클래스 생성함. 아래 세문장을 합친것임
