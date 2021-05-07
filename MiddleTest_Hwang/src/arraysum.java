@@ -1,7 +1,26 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+/* 아래 주어진 예시를 찹조하여 주어진 2차원 배열의 특정 좌표를 기준으로
+ * 해당 좌표의 종일 행의 합과 동일 열의 합을 차례로 출력하는 프로그램을 작성하시오.
+ * 입력의 첫 줄은 행과 열의 숫자를 의미라고,
+ * 아래 줄은 행과 열만큼 2차원 배열의 값을 나타낸다.
+ * 배열 다음에는 특정 좌표가 몇개인지 나타내는 숫자 하나가 주어지고,
+ * 특정 좌표의 갯수만큼 해당 좌표를 읽어들여서 출력을 처리한다.
+ * 입력
+ * 2 3
+ * 2 4 8
+ * 10 12 14
+ * 3
+ * 1 1
+ * 1 2
+ * 2 2
+ * 
+ * 출력
+ * 12 14
+ * 16 14
+ * 16 36
+ */
 public class arraysum1 {
 
 	public static void main(String[] args) throws FileNotFoundException {
