@@ -1,7 +1,7 @@
 // 사원의 정보를 담을 클래스를 생성
 public class People {
 	
-	// 프로퍼티를 생성
+	// 객체 데이터를 생성
 	String name;
 	String position;
 	String work;

@@ -6,14 +6,16 @@ public class ExecClassP {
 		Scanner sc = new Scanner(System.in);
 
 		// 부서별로 메모리할당
-//		Part[] part = { new Part("인사팀"), new Part("개발팀"), new Part("영업팀") };
+		// Part클래스의 생성자에는 People클래스 타입의 ArrayList가 생성되어 있어서 People클래스의 객체데이터에 접근할 수 있다.
+		Part[] part = { new Part("인사팀"), new Part("개발팀"), new Part("영업팀") };
 
 		// map은 키를 가져야 하므로 제네릭에 키값의 타입과 인스턴스의 타입을 모두 정의해 주어야 한다.
-		HashMap<String, Part> part = new HashMap<String, Part>();
+//		HashMap<String, Part> part = new HashMap<String, Part>();
+		
 		// 키를 설정하고, 그 키에 해당하는 클래스를 생성해줌
-		part.put("인사팀", new Part("인사팀"));
-		part.put("개발팀", new Part("개발팀"));
-		part.put("영업팀", new Part("영업팀"));
+//		part.put("인사팀", new Part("인사팀"));
+//		part.put("개발팀", new Part("개발팀"));
+//		part.put("영업팀", new Part("영업팀"));
 
 		for (int i = 0; i < 999; i++) {
 			System.out.println("메뉴를 선택해주세요.");
@@ -24,6 +26,7 @@ public class ExecClassP {
 			String userInput = sc.nextLine();
 
 			if (userInput.equals("1")) { // 직원 정보를 입력
+				
 				// 임시 저장공간에 입력값을 넣기 위해 클래스를 새로 생성
 				People tempPeople = new People();
 
@@ -40,41 +43,46 @@ public class ExecClassP {
 				System.out.println("3 : 영업팀");
 
 				String selectNumber = sc.nextLine();
+				
 				if (selectNumber.equals("1")) {
 					// part[0]의 member라는 이름을 가진 ArrayList안에 tempPeople에 임시로 담은 객체데이터를 넣는다.
-//					part[0].member.add(tempPeople);
+					part[0].member.add(tempPeople);
 					// part HashMap의 키값이 인사팀인 ArrayList안에 tempPeople에 임시로 담은 객체데이터를 넣는다.
-					part.get("인사팀").member.add(tempPeople);
+//					part.get("인사팀").member.add(tempPeople);
+					
 				} else if (selectNumber.equals("2")) {
-//					part[1].member.add(tempPeople);
-					part.get("개발팀").member.add(tempPeople);
+					part[1].member.add(tempPeople);
+//					part.get("개발팀").member.add(tempPeople);
+					
 				} else if (selectNumber.equals("3")) {
-//					part[2].member.add(tempPeople);
-					part.get("영업팀").member.add(tempPeople);
+					part[2].member.add(tempPeople);
+//					part.get("영업팀").member.add(tempPeople);
 				}
+				
 			} else if (userInput.equals("2")) { // 직원정보 출력
 
 				// 직원 정보를 반복문을 돌려서 출력
-//				for (int j = 0; j < part.length; j++) { // 부서개수만큼 반복함
-//					System.out.println("" + part[j].name + "정보출력");
-//					for (int k = 0; k < part[j].member.size(); k++) { // 해당 부서의 직원 수 만큼 반복함
-//						System.out.println(part[j].member.get(k));
-//					}
-//				}
+				for (int j = 0; j < part.length; j++) { // 부서개수만큼 반복함
+					System.out.println("" + part[j].name + "정보출력");
+					for (int k = 0; k < part[j].member.size(); k++) { // 해당 부서의 직원 수 만큼 반복함
+						System.out.println(part[j].member.get(k));
+					}
+				}
 				
 				// 키값의 리스트크기만큼 반복문을 돌려서 출력함
-				for (int j = 0; j < part.get("인사팀").member.size(); j++) {
-					System.out.println(part.get("인사팀").member.get(j));
-					
-				}
-				for (int j = 0; j < part.get("개발팀").member.size(); j++) {
-					System.out.println(part.get("개발팀").member.get(j));
-					
-				}
-				for (int j = 0; j < part.get("영업팀").member.size(); j++) {
-					System.out.println(part.get("영업팀").member.get(j));
-					
-				}
+//				for (int j = 0; j < part.get("인사팀").member.size(); j++) {
+//					System.out.println(part.get("인사팀").member.get(j));
+//					
+//				}
+//				for (int j = 0; j < part.get("개발팀").member.size(); j++) {
+//					System.out.println(part.get("개발팀").member.get(j));
+//					
+//				}
+//				for (int j = 0; j < part.get("영업팀").member.size(); j++) {
+//					System.out.println(part.get("영업팀").member.get(j));
+//					
+//				}
+				
 			} else if (userInput.equals("3")) { // 직원 정보 수정 메뉴
 
 				System.out.println("수정할 이름을 입력하세요.");
@@ -84,19 +92,22 @@ public class ExecClassP {
 				System.out.println("2 : 개발팀");
 				System.out.println("3 : 영업팀");
 				String selectNumber = sc.nextLine();
+				
 				// 해당부서의 정보 전체가 들어갈 변수를 생성
 				Part selectPart = null;
 				
+				// 선택한 부서의 전체 사원 정보를 selectPart에 맵핑함
 				if (selectNumber.equals("1")) {
-//					selectPart = part[0];
-					selectPart = part.get("인사팀");
+					selectPart = part[0];
+//					selectPart = part.get("인사팀");
 				} else if (selectNumber.equals("2")) {
-//					selectPart = part[1];
-					selectPart = part.get("개발팀");
+					selectPart = part[1];
+//					selectPart = part.get("개발팀");
 				} else if (selectNumber.equals("3")) {
-//					selectPart = part[2];
-					selectPart = part.get("영업팀");
+					selectPart = part[2];
+//					selectPart = part.get("영업팀");
 				}
+				
 				// 참 거짓을 판단할 플래그 변수 선언
 				// 변수안에 값이 들어가야 하기 때문에 클래스타입의 변수로 생성
 				People selectPeople = null;
